@@ -32,16 +32,16 @@ INSERT INTO Mecanico VALUES	(1, 'José', 'Alheira', 'Eletricista'),
                             (5, 'Amanda', 'Rua plenitude, 54', 'Qualquer tipo de reparo'),
                             (6, 'Caio', 'Av. Ambrosia', 'Funilaria');
 
-SELECT * FROM OdServiço;
-INSERT INTO OdServiço VALUES 	(1, '2023/08/08', '145.00', '25.00', '169.50', 'AGUARDANDO', NULL),
+SELECT * FROM OdServico;
+INSERT INTO OdServico VALUES 	(1, '2023/08/08', '145.00', '25.00', '169.50', 'AGUARDANDO', NULL),
 								(2, '2023/08/06', '199.99', '85.90', '208.99', 'CONCLUIDO', '2023/07/13'),
 								(3, '2023/08/03', '934.99', '569.99', '959.99', 'CONCLUIDO', '2023/08/10'),
 								(4, '2023/08/18', '299.99', '109.99', '354.99', 'EM ANDAMENTO', NULL),
 								(5, '2023/08/22', '519.99', '9.99', '499.99', 'CANCELADO', NULL),
 								(6, '2023/08/27', '779.99', '7.99', '639.99', 'EM ANDAMENTO', NULL);
                                 
-SELECT * FROM Autorização;
-INSERT INTO Autorização VALUES 	(1, FALSE),
+SELECT * FROM Autorizacao;
+INSERT INTO Autorizacao VALUES 	(1, FALSE),
 								(2, TRUE),
 								(3, TRUE),
 								(4, TRUE),
@@ -56,14 +56,14 @@ INSERT INTO Pecas VALUES 	(1, 'Pneu', '19.99'),
 							(5, 'Volante', '29.99'),
 							(6, 'Cambio', '569.99');
                                 
-SELECT * FROM Serviços;
-INSERT INTO Serviços VALUES 	(1, 'Problemas Eletricos', '149.59'),
+SELECT * FROM Servicos;
+INSERT INTO Servicos VALUES 	(1, 'Problemas Eletricos', '149.59'),
 								(2, 'Caixa de cambio quebrado', '199.99'),
 								(3, 'Problemas Eletricos', '729.99'),
 								(4, 'Peça proxima a caixa de direção danificada', '349.99'),
 								(5, 'Pneu Furado', '129.99'),
 								(6, 'O sistema de ar condicionado danificada', '899.99');
 
-SELECT Autorização.Autorizado, OdServiço.idOdServiço, Clientes.idClientes
-	FROM Autorização
-    CROSS JOIN OdServiço, Clientes;
+SELECT Autorizacao.Autorizado, OdServico.idOdServico, Clientes.idClientes
+	FROM Autorizacao
+    CROSS JOIN OdServico, Clientes;
