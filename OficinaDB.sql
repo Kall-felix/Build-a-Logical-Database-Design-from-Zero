@@ -1,12 +1,12 @@
 USE Oficina;
 
 SELECT * FROM PessoaFisica;
-INSERT INTO PessoaFisica VALUES (1, 'Rafael', 12345678910, 'Los Angeles, 456', '23478965042'),
-								(2, 'João', 60282037004, 'Ilhabela, 5', '43857959088'),
-                                (3, 'Eustácio', 83555680013, 'Cristo, 99', '89424074042'),
-                                (4, 'Mateus', 99504436013, 'Luis de Camoes, 45', '60494709014'),
-                                (5, 'Arlete', 57795781098, 'Maria Madalena, 21', '64883109097'),
-                                (6, 'Julia', 85276921040, 'Bom Jesus, 7', '27499949001');
+INSERT INTO PessoaFisica VALUES (1, 'Rafael', 12345678910, 'Cristal, 456', '97973748992'),
+								(2, 'João', 60282037004, 'Ilhabela, 5', '75983324796'),
+                                (3, 'Eustácio', 83555680013, 'Cristo, 99', '97979473312'),
+                                (4, 'Mateus', 99504436013, 'Luis de Camoes, 45', '96989181236'),
+                                (5, 'Arlete', 57795781098, 'Maria Madalena, 21', '99973721754'),
+                                (6, 'Julia', 85276921040, 'Bom Jesus, 7', '79993502122');
 
 SELECT * FROM Veiculo;
 INSERT INTO Veiculo VALUES 	(1, 1, 'HNN5808'),
