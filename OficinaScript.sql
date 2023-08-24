@@ -67,7 +67,7 @@ CREATE TABLE Conserto(
 DESC Conserto;
 
 -- REVISÃO
-CREATE TABLE Revisão(
+CREATE TABLE Revisao(
 	idRevisão INT auto_increment PRIMARY KEY,
     Descrição VARCHAR(45) NOT NULL
 );
@@ -95,7 +95,7 @@ ALTER TABLE OdServiço ADD CONSTRAINT fk_OdServiço FOREIGN KEY (idOdServiço) R
 DESC EqpMecanicos;
 
 -- ORDEM DE SERVIÇO
-CREATE TABLE OdServiço(
+CREATE TABLE OdServico(
 	idOdServiço INT auto_increment PRIMARY KEY,
     DataEmissão DATE,
     ValorServiço FLOAT NOT NULL,
@@ -110,7 +110,7 @@ SELECT * FROM OdServiço ORDER BY ValorTotal;
 DESC OdServiço;
 
 -- REFERENCIA DE PREÇOS
-CREATE TABLE ReferenciaPreços(
+CREATE TABLE ReferenciaPrecos(
 	idReferenciaPreços INT auto_increment PRIMARY KEY,
     CONSTRAINT fk_referencia_precos FOREIGN KEY (idReferenciaPreços) REFERENCES OdServiço(idOdServiço)
 );
@@ -118,7 +118,7 @@ CREATE TABLE ReferenciaPreços(
 DESC ReferenciaPreços;
 
 -- AUTORIZAÇÃO CLIENTE
-CREATE TABLE Autorização(
+CREATE TABLE Autorizacao(
 	idAutorização INT auto_increment PRIMARY KEY,
 	Autorizado BOOL DEFAULT FALSE,
     CONSTRAINT fk_autorização_cliente FOREIGN KEY (idAutorização) REFERENCES Clientes(idClientes),
@@ -147,7 +147,7 @@ CREATE TABLE OsPecas(
 DESC OsPecas;
 
 -- SERVIÇOS
-CREATE TABLE Serviços(
+CREATE TABLE Servicos(
 	idServiços INT auto_increment PRIMARY KEY,
     Descrição VARCHAR(45),
     Valor FLOAT NOT NULL
@@ -156,7 +156,7 @@ CREATE TABLE Serviços(
 DESC Serviços;
 
 -- ORDEM DE SERVIÇO
-CREATE TABLE OdServiço(
+CREATE TABLE OdServico(
 	idOdServiço INT auto_increment PRIMARY KEY,
     CONSTRAINT fk_serviços FOREIGN KEY (idOdServiço) REFERENCES Serviços(idServiços),
     CONSTRAINT fk_os_serviços FOREIGN KEY (idOdServiço) REFERENCES OdServiço(idOdServiço)
