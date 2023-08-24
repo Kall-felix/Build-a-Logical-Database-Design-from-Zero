@@ -6,14 +6,14 @@ DROP DATABASE Oficina;
 -- VEICULO
 CREATE TABLE Veiculo(
 	idVeiculo INT auto_increment PRIMARY KEY,
-    idRevisão INT,
+    idRevisao INT,
     Placa CHAR(7) NOT NULL,
     CONSTRAINT placa_idVeiculo UNIQUE (idVeiculo, Placa)
 );
 
 ALTER TABLE Veiculo ADD CONSTRAINT fk_eqp_mecanicos FOREIGN KEY (idVeiculo) REFERENCES EqpMecanico(idEqpMecanico),
 ADD CONSTRAINT fk_conserto FOREIGN KEY (idVeiculo) REFERENCES Conserto(idConserto),
-ADD CONSTRAINT fk_revisao FOREIGN KEY (idRevisão) REFERENCES Revisao(idRevisão);
+ADD CONSTRAINT fk_revisao FOREIGN KEY (idRevisao) REFERENCES Revisao(idRevisão);
 
 DESC Veiculo;
 
@@ -31,7 +31,7 @@ CREATE TABLE PessoaFisica(
 	idPessoaFisica INT auto_increment PRIMARY KEY,
     Nome VARCHAR(45) NOT NULL,
     CPF CHAR(11) NOT NULL,
-    Endereço VARCHAR(45),
+    Endereco VARCHAR(45),
     Contato CHAR(11)
 );
 
@@ -61,15 +61,15 @@ DESC PessoaJuridica;
 -- CONSERTO
 CREATE TABLE Conserto(
 	idConserto INT auto_increment PRIMARY KEY,
-    Descrição VARCHAR(45) NOT NULL
+    Descricao VARCHAR(45) NOT NULL
 );
 
 DESC Conserto;
 
 -- REVISÃO
 CREATE TABLE Revisao(
-	idRevisão INT auto_increment PRIMARY KEY,
-    Descrição VARCHAR(45) NOT NULL
+	idRevisao INT auto_increment PRIMARY KEY,
+    Descricao VARCHAR(45) NOT NULL
 );
 
 DESC Revisão;
@@ -78,7 +78,7 @@ DESC Revisão;
 CREATE TABLE Mecanico(
 	idMecanico INT auto_increment PRIMARY KEY,
     Nome VARCHAR(45) NOT NULL,
-    Endereço VARCHAR(45) NOT NULL,
+    Endereco VARCHAR(45) NOT NULL,
     Especialidade VARCHAR(45) NOT NULL
 );
 
@@ -90,32 +90,32 @@ CREATE TABLE EqpMecanicos(
 );
 
 ALTER TABLE EqpMecanicos ADD CONSTRAINT fk_Mecanico FOREIGN KEY (idEqpMecanicos) REFERENCES Mecanico(idMecanico);
-ALTER TABLE OdServiço ADD CONSTRAINT fk_OdServiço FOREIGN KEY (idOdServiço) REFERENCES OdServiço(idOdServiço);
+ALTER TABLE OdServico ADD CONSTRAINT fk_OdServico FOREIGN KEY (idOdServico) REFERENCES OdServico(idOdServico);
 
 DESC EqpMecanicos;
 
 -- ORDEM DE SERVIÇO
 CREATE TABLE OdServico(
-	idOdServiço INT auto_increment PRIMARY KEY,
-    DataEmissão DATE,
-    ValorServiço FLOAT NOT NULL,
-    ValorPeça FLOAT NOT NULL,
+	idOdServico INT auto_increment PRIMARY KEY,
+    DataEmissao DATE,
+    ValorServico FLOAT NOT NULL,
+    ValorPeca FLOAT NOT NULL,
     ValorTotal FLOAT NOT NULL,
     Status ENUM('AGUARDANDO', 'EM ANDAMENTO', 'CONCLUIDO', 'CANCELADO'),
-    DataConclusão DATE
+    DataConclusao DATE
 );
 
-SELECT * FROM OdServiço ORDER BY DataEmissão;
-SELECT * FROM OdServiço ORDER BY ValorTotal;
+SELECT * FROM OdServico ORDER BY DataEmissão;
+SELECT * FROM OdServico ORDER BY ValorTotal;
 DESC OdServiço;
 
 -- REFERENCIA DE PREÇOS
 CREATE TABLE ReferenciaPrecos(
-	idReferenciaPreços INT auto_increment PRIMARY KEY,
+	idReferenciaPrecos INT auto_increment PRIMARY KEY,
     CONSTRAINT fk_referencia_precos FOREIGN KEY (idReferenciaPreços) REFERENCES OdServiço(idOdServiço)
 );
 
-DESC ReferenciaPreços;
+DESC ReferenciaPrecos;
 
 -- AUTORIZAÇÃO CLIENTE
 CREATE TABLE Autorizacao(
@@ -126,7 +126,7 @@ CREATE TABLE Autorizacao(
     CONSTRAINT fk_autorização_OdServiço FOREIGN KEY (idAutorização) REFERENCES OdServiço(idOdServiço)
 );
 
-DESC Autorização;
+DESC Autorizacao;
 
 -- PEÇAS
 CREATE TABLE Pecas(
@@ -153,7 +153,7 @@ CREATE TABLE Servicos(
     Valor FLOAT NOT NULL
 );
 
-DESC Serviços;
+DESC Servicos;
 
 -- ORDEM DE SERVIÇO
 CREATE TABLE OdServico(
@@ -162,4 +162,4 @@ CREATE TABLE OdServico(
     CONSTRAINT fk_os_serviços FOREIGN KEY (idOdServiço) REFERENCES OdServiço(idOdServiço)
 );
 
-DESC OdServiço;
+DESC OdServico;
